@@ -1,3 +1,4 @@
 ipynb/*ipynb
 py/*py
 results/*csv
+.ipynb_checkpoints/

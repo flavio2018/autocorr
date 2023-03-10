@@ -8,7 +8,7 @@ def get_with_re(path):
     answers = []
     with open(path, 'r') as f:
         hw = f.read()
-        match = re.findall(r"(?<=%START)(.*?)(?=%END)", hw, flags=re.DOTALL)
+        match = re.findall(r"(?<=%STARTEXT)(.*?)(?=%ENDTEXT)", hw, flags=re.DOTALL)
         # What's the point of this? I don't get it
         # seperator = '\n' + '-' * 25 + '\n'
         # answer = seperator
