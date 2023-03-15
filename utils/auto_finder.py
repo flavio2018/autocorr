@@ -6,7 +6,7 @@ import pandas as pd
 
 def get_with_re(path):
     answers = []
-    with open(path, 'r') as f:
+    with open(path, 'r', encoding="utf-8") as f:
         hw = f.read()
         match = re.findall(r"(?<=%STARTEXT)(.*?)(?=%ENDTEXT)", hw, flags=re.DOTALL)
         # What's the point of this? I don't get it

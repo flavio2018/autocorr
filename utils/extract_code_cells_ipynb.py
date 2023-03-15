@@ -14,7 +14,7 @@ def main():
 
 	for filepath in py_files:
 		print(f"Loading file {filepath}...")
-		with open(filepath, 'r') as ipynb:
+		with open(filepath, 'r', encoding="utf-8") as ipynb:
 			ipynb_dict = json.loads(ipynb.read())
 
 		print("Extracting cells...")
