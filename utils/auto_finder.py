@@ -8,7 +8,7 @@ def get_with_re(path):
     answers = []
     with open(path, 'r', encoding="utf-8") as f:
         hw = f.read()
-        match = re.findall(r"(?<=%STARTEXT)(.*?)(?=%ENDTEXT)", hw, flags=re.DOTALL)
+        match = re.findall(r"(?<=`%STARTEXT`)(.*?)(?=`%ENDTEXT`)", hw, flags=re.DOTALL)
         # What's the point of this? I don't get it
         # seperator = '\n' + '-' * 25 + '\n'
         # answer = seperator
@@ -33,7 +33,7 @@ def main():
         results = pd.DataFrame()
 
     for f in py_files:
-        name = f.stem
+        name = f.stem.replace('_', ' ').upper()
         answers = get_with_re(f)
         columns = ["Q" + str(n_col + 1) for n_col in range(len(answers))]
 
