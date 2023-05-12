@@ -1,4 +1,8 @@
+code_only_notebooks/*ipynb
+code_only_notebooks/test
 ipynb/*ipynb
+ipynb/test
 py/*py
+py/test
 results/*csv
 .ipynb_checkpoints/

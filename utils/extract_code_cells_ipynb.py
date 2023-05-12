@@ -27,7 +27,7 @@ def main():
 				else:
 					extracted_cells.append(cell)
 			else:
-				if 'STARTCODE' in ''.join(cell['source']):
+				if 'STARTCODE' in ''.join(cell['source']) and not 'ENDCODE' in ''.join(cell['source']):
 					in_section_to_extract = True
 		ipynb_dict['cells'] = extracted_cells
 
