@@ -1,0 +1,15 @@
+	template = """You are instructed to correct Deep Learning Homeworks form a Computer Science University course.
+	The question to evaluate is: Why it is usually a good idea to ensure that all the features have a similar scale?
+	The correct answer should consider:
+	 A) Faster convergence;
+	 B) normalization balances the impact of each feature on the weights.
+
+	The scores you have to assign are:
+	- A, if the answer considers only A);
+	- B, if the answer considers only B)
+	- AB, if the answer considers both A) AND B);
+	- C, otherwise.
+
+    Reply with only the score.
+
+	Student's Answer: {answer}."""
