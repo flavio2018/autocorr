@@ -3,17 +3,22 @@ from pathlib import Path
 
 import pandas as pd
 
+old_re = re.compile(r"(?<=`%STARTEXT`)(.*?)(?=(`%ENDTEXT`))", flags=re.DOTALL)
+new_re = re.compile(r"%STARTEXT(.*?)%(?:ENDTEXT|ENDEXT)", flags=re.DOTALL) # Bugfix in HW5
+clean_re = re.compile(r"[\n\"#`*\r-]+")
 
 def get_with_re(path):
     answers = []
     with open(path, 'r', encoding="utf-8") as f:
         hw = f.read()
-        match = re.findall(r"(?<=`%STARTEXT`)(.*?)(?=`%ENDTEXT`)", hw, flags=re.DOTALL)
+        match = new_re.findall(hw)
         # What's the point of this? I don't get it
         # seperator = '\n' + '-' * 25 + '\n'
         # answer = seperator
         for ans in match:
-            ans = ans.replace('\n', '').replace('\r', '').replace('#', '').replace('*', '')
+            # ans = ans.replace('\n', '').replace('\r', '').replace('#', '').replace('*', '').replace("-+", '').replace("`", '')
+            ans = clean_re.sub("", ans)  # Clean text
+            ans = ans.replace(r"\s+", " ")  # Keep only 1 space between words
             answers += [ans]
         return answers
 
