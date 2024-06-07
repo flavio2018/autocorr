@@ -22,12 +22,16 @@ def main():
 		in_section_to_extract = False
 		for cell in ipynb_dict['cells']:
 			if in_section_to_extract:
-				if 'ENDCODE' in ''.join(cell['source']):
+				if 'ENDCODE' in ''.join(cell['source']) or 'ENDTEXT' in ''.join(cell['source']):
 					in_section_to_extract = False
+					cell_copy = cell.copy()
+					cell_copy['source'] = "# START NEXT QUESTION"
+					extracted_cells.append(cell_copy)
 				else:
 					extracted_cells.append(cell)
 			else:
-				if 'STARTCODE' in ''.join(cell['source']) and not 'ENDCODE' in ''.join(cell['source']):
+				if(('STARTCODE' in ''.join(cell['source']) and not 'ENDCODE' in ''.join(cell['source'])) or
+				    ('STARTEXT' in ''.join(cell['source']) and not 'ENDTEXT' in ''.join(cell['source']))):
 					in_section_to_extract = True
 		ipynb_dict['cells'] = extracted_cells
 
